@@ -16,7 +16,7 @@ When setting attributes on tags, follow these rules:
 3. JS-related attributes should come last.
 4. Use one space character to separate each individual attribute.
 5. Use *three* space characters to separate the three *groups* of attributes mentioned above.
-6. Always arrange them consistently when using on multiple elements.
+6. Arrange them consistently when using on multiple elements.
 
 ```html
 <!-- Don't: -->
@@ -42,27 +42,30 @@ When setting attributes on tags, follow these rules:
 
 When setting multiple classes on a single tag, follow these rules:
 
-1. Component classes should come first, and should be limited to one only. They can be accompanied by as many modifier classes as needed.
-2. Page-specific classes should come next, and should also be limited to one only. They can also be accompanied by as many modifier classes as needed.
-3. Utility classes should come last. Use as many as needed.
+1. Component Classes should come first, and should be limited to one only. They can be accompanied by as many Modifier Classes as needed.
+2. Local Classes should come next, and should be limited to one only. They can be accompanied by as many Modifier Classes as needed.
+3. Utility Classes should come last. Use as many as needed.
+    - When using Utility Classes with media queries, arrange them from smallest to largest.
+    - Separate each size with *three* space characters.
 4. Use one space character to separate classes within the same group.
 5. Use *three* space characters to separate the three *groups* of classes mentioned above.
-6. Always arrange them consistently when using on multiple elements.
+6. Arrange them consistently when using on multiple elements.
 
-For more details in regards to component classes vs. page-specific classes vs utility classes vs modifier classes, do check out the [CSS](css.md) guide.
+:question: **Why limit Component Classes and Local Classes to just one of each per tag?**
 
-:question: **Why** limit component classes to one only? The main purpose of component classes is to be able to use them throughout the site and have predictable outcomes. Mixing multiple component classes goes against this purpose, and I feel that the trade-off isn't worth going through just for the sake of reducing the element count by one.
+- To reduce style conflicts and ensure that our classes behave more predictably. This is especially important for Component Classes, which are typically each created in its own vacuum scope without considerations of being combined with other Component Classes.
+- [Modifier Classes](css.md#modifier-classes).
 
-:question: **Why** then do I allow page-specific classes to be used together with component classes? Because the main purpose of a page-specific class is to actually add to, complement, or maybe even override the style of the component class.
+:exclamation: Be sure to check out the [CSS](css.md) guide for more details on [Component Classes](css.md#component-classes), [Local Classes](css.md#local-classes), [Modifier Classes](css.md#modifier-classes), and [Utility Classes](css.md#utility-classes).
 
 ```html
 <!-- Don't: -->
-<div class="pd:1 Popup Panel _Register-popup _MNP-popup --compact _--super">
+<div class="p:1 popup panel Register-Popup MNP-Popup --compact --Super p:3@md p:2@sm m:2@md m:1@sm">
     ...
 </div>
 
 <!-- Do: -->
-<div class="Popup --compact   _Register-popup _--super   pd:1">
+<div class="popup --compact   Register-Popup --Super   p:1   p:2@sm m:1@sm   p:3@md m:2@md">
     ...
 </div>
 ```
@@ -87,9 +90,9 @@ For the sake of this coding guide, though, I personally see two patterns for it 
 <div id="media-query"></div> <!-- Has styles associated with it -->
 ```
 
-:question: **What** is this about setting styles on IDs!? Well, it's not so much styling, but more like a way to pass in data from CSS, to be consumed in JS. My most common use for this is media query detection, as media queries are a very CSS-thing that I don't want to decouple from the JS side.
+:question: **What is this about setting styles on IDs!?** Well, it's not so much styling, but more like a way to pass in data from CSS, to be consumed in JS. My most common use for this is media query detection, as media queries are a very CSS-thing that I don't want to decouple from the JS side.
 
-:exclamation: When it comes to integration with **back-end** (especially .NET and `<input>`), there is typically a decent chance of the ID being replaced by a server-generated ID of some sort, so I generally try not to rely on using IDs if possible. For example, rather than using IDs to link a `<label>` with an `<input>`, just wrap the `<label>` around the target `<input>`.
+:exclamation: **When it comes to integration with back-end** (especially .NET and `<input>`), there is typically a decent chance of the ID being replaced by a server-generated ID of some sort, so I generally try not to rely on using IDs if possible. For example, rather than using IDs to link a `<label>` with an `<input>`, just wrap the `<label>` around the target `<input>`.
 
 ## Line formatting
 
