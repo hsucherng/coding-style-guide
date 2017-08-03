@@ -78,7 +78,7 @@ I do not use them to mark closing tags, as I believe good formatting and indenta
 
 ## ID
 
-I currently camelCase my IDs — no particular reason for it, and I haven't stumbled upon anything that would strongly convince to stick to a specific case convention.
+I currently camelCase my IDs — no particular reason for it, and I haven't stumbled upon anything that would strongly convince me to stick to a specific case convention.
 
 For the sake of this coding guide, though, I personally see two patterns for it in my own usage:
 

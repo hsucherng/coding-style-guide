@@ -30,12 +30,12 @@ Component Class names should have these properties:
 Examples of Component Classes:
 
 - `.button` — any element that uses this class is expected to look like a button.
-- `.banner` — any element that uses this class is expected to look like a banner.
+- `.page-banner` — any element that uses this class is expected to look like a page banner.
 - `.media` — a common component used to display an image together with some text. Can be used for comments, author profile, search results, and more.
 
 ### Local Classes
 
-Local Classes are restricted classes that are intended to be used only for a specific page or section. These classes can be used on their own, or can be used to complement Component Classes.
+Local Classes are restricted classes that are intended to be used for a specific page or section only. These classes can be used on their own, or can be used to complement Component Classes.
 
 Local Class names should have these properties:
 
@@ -51,7 +51,7 @@ Examples of Local Classes:
 
 ### Modifier Classes
 
-Modifier Classes are classes that are used to add onto or tweak the styles a specific base class. These are classes that are do nothing on their own; they must always be associated with a base class.
+Modifier Classes are dependent classes that are used to add onto or tweak the styles of a specific base class. These are classes that do nothing on their own; they must always be associated with a base class.
 
 Modifier Class names should have these properties:
 
@@ -71,7 +71,7 @@ Utility Classes are global classes that consistently provide a single, specific 
 
 Utility Class names are inspired single-handedly from [shed.css](http://tedconf.github.io/shed-css/), which follows this naming scheme: `A:B@C`, where:
 
-- `A` is one or more letters representing a style property name, e.g. `f` for `font`.
+- `A` is one or more letters representing a style property name, e.g. `d` for `display`.
 - `B` is highly dependent on what `A` is, and can either be:
     - One or more letters, this time representing the style value name, e.g. `i` for inline, `ib` for `inline-block`.
     - One or more digits representing a certain scale of size or dimension.
@@ -100,12 +100,13 @@ Examples:
 
 These are essentially Modifier Classes, but are toggled through JavaScript.
 
-To clearly distinguish these classes, use one of these specific keywords while maintaining the same format as Modifier Classes: `is`, `has`.
+To clearly distinguish these classes, use one of these specific keywords — `is` or `has` — while maintaining the same format as Modifier Classes.
 
 Examples:
 
 - `.--has-error` as a state for `.field` to show that the input field did not pass validation.
 - `.--is-disabled` as a state for `.button` to show that it shouldn't be interacted with.
+- `.--Submitted` as a state for `.Address-Form` to show that it has been submitted.
 
 ### Component Classes vs Local Classes
 
@@ -130,4 +131,4 @@ However, in the first place, depending on how elaborate the Utility Classes are 
 
 My main argument against using solely Utility Classes is because of the thought process that I have to get into. If I want to style an element as a button, I do not want to think of how to piece together a whole bunch of different Utility Classes to get it to look like a button — I just want to style it as a button. That's where Component Classes fit in — just use the `.button` class, and I can expect the element to look like a button.
 
-The above can be resolved through a templating layer, but I have yet to figure out how to set that layer up, and since the final geneated HTML files end up being riddled with Utility Classes anyway, I worry on how the back-end developers would integrate the HTML into their project.
+The above can be resolved through a templating layer, but I have yet to figure out how to set that layer up, and since the final generated HTML files end up being riddled with Utility Classes anyway, I worry on how the back-end developers would integrate the HTML into their project.
