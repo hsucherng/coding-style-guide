@@ -81,8 +81,6 @@ As an effort to reduce repetition, I personally drop the block name from the mod
 <a href="#/" class="button --black"></a>
 ```
 
-The trade-off with removing the block element from the modifier class name is that we can not combine multiple block element classes together. If we were to do so, we will not be able to control and identify which block element the modifier belongs to. But I think it is a worthwhile trade-off, because having multiple block element classes on the same element often leads to more substantial style conflicts.
-
 
 
 
@@ -146,13 +144,15 @@ Examples:
 
 These are essentially modifier classes, but are toggled through JavaScript.
 
-To clearly distinguish these classes, use one of these specific keywords — `is` or `has` — while maintaining the same format as the Component or Local Class that it's associated with.
+To clearly distinguish these classes, use one of these specific keywords — `is` or `has` — while maintaining the same format as the Component or Local Class that it's associated with. The keyword doesn't have to be used as the first word of the class — as long as it's used in any part of the class, it should be recognised as a State Class.
 
 Examples:
 
 - `.--has-error` as a state for `.field` to show that the input field did not pass validation.
 - `.--is-disabled` as a state for `.button` to show that it shouldn't be interacted with.
-- `.--Submitted` as a state for `.Address-Form` to show that it has been submitted.
+- `.--popup-is-shown` as a state for `body` to hide the page's scrollbar when a popup is shown.
+- `.--Is-Submitted` as a state for `.Address-Form` to show that it has been submitted.
+
 
 ### Component Classes vs Local Classes
 

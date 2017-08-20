@@ -1,11 +1,19 @@
 # HTML
 
+
+
+
+
 - [Attributes](#attributes)
 - [Class](#class)
 - [Comments](#comments)
 - [ID](#id)
 - [Line formatting](#line-formatting)
 - [Semantics](#semantics)
+
+
+
+
 
 ## Attributes
 
@@ -38,23 +46,22 @@ When setting attributes on tags, follow these rules:
 </button>
 ```
 
+
+
+
+
 ## Class
 
-When setting multiple classes on a single tag, follow these rules:
+When setting multiple classes on a single tag:
 
-1. Component Classes should come first, and should be limited to one only. They can be accompanied by as many Modifier Classes as needed.
-2. Local Classes should come next, and should be limited to one only. They can be accompanied by as many Modifier Classes as needed.
-3. Utility Classes should come last. Use as many as needed.
-    - When using Utility Classes with media queries, arrange them from smallest to largest.
-    - Separate each size with *three* space characters.
-4. Use one space character to separate classes within the same group.
-5. Use *three* space characters to separate the three *groups* of classes mentioned above.
-6. Arrange them consistently when using on multiple elements.
-
-:question: **Why limit Component Classes and Local Classes to just one of each per tag?**
-
-- To reduce style conflicts and ensure that our classes behave more predictably. This is especially important for Component Classes, which are typically each created in its own vacuum scope without considerations of being combined with other Component Classes.
-- [Modifier Classes](css.md#modifier-classes).
+1. Arrange the classes in this order:
+    1. Component Classes first.
+    2. Local Classes second.
+    3. Utility Classes last.
+2. Separate Component and Local Classes using three space characters.
+3. When using Modifier Classes, place them *after* their associated base class, separated with one space character.
+4. Utility Classes should be individually spaced with one space character. When using responsive Utility Classes, group them up baseed on their media query, arranged from smallest to largest, and separate each group with three space characters.
+5. Arrange them consistently when using on multiple elements.
 
 :exclamation: Be sure to check out the [CSS](css.md) guide for more details on [Component Classes](css.md#component-classes), [Local Classes](css.md#local-classes), [Modifier Classes](css.md#modifier-classes), and [Utility Classes](css.md#utility-classes).
 
@@ -70,11 +77,19 @@ When setting multiple classes on a single tag, follow these rules:
 </div>
 ```
 
+
+
+
+
 ## Comments
 
 HTML comments are quite uncommon for me. I usually use comments to explain things, and that requirement doesn't come up often in HTML.
 
 I do not use them to mark closing tags, as I believe good formatting and indentation will allow me to easily collapse sections of code in my text editors.
+
+
+
+
 
 ## ID
 
@@ -94,14 +109,18 @@ For the sake of this coding guide, though, I personally see two patterns for it 
 
 :exclamation: **When it comes to integration with back-end** (especially .NET and `<input>`), there is typically a decent chance of the ID being replaced by a server-generated ID of some sort, so I generally try not to rely on using IDs if possible. For example, rather than using IDs to link a `<label>` with an `<input>`, just wrap the `<label>` around the target `<input>`.
 
+
+
+
+
 ## Line formatting
 
-When using elements with both an opening and closing tag, always format it into muliple lines with proper indentation, *unless*:
+When using elements with both an opening and closing tag, always format it into multiple lines with proper indentation, *unless*:
 
 1. The element has *zero* attributes, and
 2. The element only has text contents; it does not have any child elements.
 
-If the element satisfies the above two conditions, then I will format it into a single line.
+If the element satisfies the above two conditions, format it into a single line.
 
 ```html
 <!-- Don't: -->
@@ -125,6 +144,10 @@ If the element satisfies the above two conditions, then I will format it into a 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 ```
 
+
+
+
+
 ## Semantics
 
 Proper usage of headings, lists, paragraphs, etc. is a good idea in general, but I need a much more concrete way to figure out what's right and what's wrong, and a much more obvious way to outline the tangible differences.
@@ -147,4 +170,4 @@ Low hanging fruits that I've stuck with are:
 - Forms: `<form>`, `<input>`, `<button>`, `<label>`
 - Sectioning: `<section>`, `<aside>`, `<main>`, `<header>`, `<footer>`, `<nav>`
 - Using anchors `<a>` for links that primarily take us to a different page; using `<button>` for clickable elements that primarily run JavaScript
-- `<img>` for images that are significant in terms of content, and `background-image` for images that are decorative in nature
+- `<img>` for images that are are part of the content, and `background-image` for images that are decorative in nature
