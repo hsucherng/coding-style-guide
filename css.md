@@ -27,7 +27,7 @@
 
 ## BEM Methodology
 
-BEM stands for **_B_lock, _E_lement, _M_odifier**, and it is a methodology that I often use, with [one main difference highlighted in a section further below](#making-it-a-little-more-dry).
+BEM stands for _**B**lock, **E**lement, **M**odifier_, and it is a methodology that I often use, with [one main difference highlighted in a section further below](#making-it-a-little-more-dry).
 
 The standard BEM convention is as follows:
 
@@ -55,7 +55,7 @@ BEM makes our classes much more clearer and predictable. Just by glancing at the
 </a>
 ```
 
-There are many resources on the web that discuss about BEM, some of which I've read are listed below. Do look up more articles if need to get more details on this methodology.
+There are many resources on the web that discuss about BEM, some of which are listed below.
 
 - BEM Methodology: [Quick Start](https://en.bem.info/methodology/quick-start/)
 - CSS Wizardry: [MindBEMding - getting your head 'round BEM syntax](https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
@@ -113,17 +113,11 @@ Local Class names should have these properties:
 
 ### Utility Classes
 
-Utility Classes are global classes that consistently provide a single, specific style. They function almost like inline styles, except with terse naming and better functionality.
+Utility Classes are global classes that consistently provide a single, specific style. They function almost like inline styles, except with terse naming, lower specificity, and responsive compatibility.
 
-Utility Class names are inspired single-handedly from [shed.css](http://tedconf.github.io/shed-css/), which follows this naming scheme: `A:B@C`, where:
+Utility Class names are inspired single-handedly from [shed.css](http://tedconf.github.io/shed-css/), which follows this naming scheme: `LETTER(S):(VALUE)@(MEDIA)`.
 
-- `A` is one or more letters representing a style property name, e.g. `d` for `display`.
-- `B` is highly dependent on what `A` is, and can either be:
-    - One or more letters, this time representing the style value name, e.g. `i` for inline, `ib` for `inline-block`.
-    - One or more digits representing a certain scale of size or dimension.
-- `C` is two letters representing the media query to be used for the class, e.g. `sm`. This portion is optional and can be removed together with the `@` symbol if it doesn't need to have a media query.
-
-There are a number of concepts involved with Utility Classes, so it is best to read more about it in its [documentation](#/).
+Read more about Utility Classes [here](css-utility-classes.md).
 
 ### JavaScript Classes
 
@@ -139,6 +133,8 @@ Examples:
 
 - `.js-popup-toggler` for elements that need to toggle a popup.
 - `.js-masonry-item` for elements that need to be initialised into a Masonry layout.
+
+:exclamation: **Consider using data attributes instead of Selection Classes,** reason being that it's more flexible, as it's possible to pass in a value to modify the behaviour of our JavaScript.
 
 #### State Classes
 
@@ -158,16 +154,16 @@ Examples:
 
 The most important factor to consider is always **where** and **how often** do I imagine myself using the class:
 
-- If I expect to use the class *multiple times* on *multiple pages* throughout the entire site, I will treat as a Component Class.
-- If I expect to use the class *once or twice only* on *one or two pages only*, I will treat it as a Local Class.
+- If I expect to use the class *multiple times* on *multiple pages* throughout the entire site, I will set it up as a Component Class.
+- If I expect to use the class *once or twice only* on *one or two pages only*, I will set it up as a Local Class.
 
 ### Utility Classes vs inline styles
 
 Utility Classes are a step above inline styles because:
 
-1. Utility Classes are much more terse, to the point of being unreadable to people who've never seen this kind of naming scheme before: `w:10` vs `width: 100%`, `d:ib` vs `display: inline-block`.
-2. A certain amount of consistency can still be maintained, through a scale system. For example, the default font-size scale through Utility Classes is `f:1`. If we want a slightly smaller size, rather than thinking of a very specific size to use — and whether it'd be consistent with the rest of the site — we can just bump down the digit by a fraction, to `f:.9`.
-3. Utility Classes can be setup for use with media queries, making them responsive-viable. Inline styles can't be used with media queries at all.
+- They are more terse: `display: inline-block` is greatly shortened to `d:ib`.
+- Their specificity is much lower than inline styles, forcing us to be much more considerate and deliberate with their use.
+- They can be used in a responsive manner. For example, `d:ib@sm` turns the element into an inline-block element only in the `sm` viewport and above.
 
 ### Utility Classes vs other classes
 
@@ -177,7 +173,7 @@ However, in the first place, depending on how elaborate the Utility Classes are 
 
 My main argument against using solely Utility Classes is because of the thought process that I have to get into. If I want to style an element as a button, I do not want to think of how to piece together a whole bunch of different Utility Classes to get it to look like a button — I just want to style it as a button. That's where Component Classes fit in — just use the `.button` class, and I can expect the element to look like a button.
 
-The above can be resolved through a templating layer, but I have yet to figure out how to set that layer up, and since the final generated HTML files end up being riddled with Utility Classes anyway, I worry on how the back-end developers would integrate the HTML into their project.
+The above can be resolved through a templating layer, but I have yet to figure out how to set that layer up, and since the final generated HTML files end up being riddled with Utility Classes anyway, I worry on how other developers would integrate the HTML into their project.
 
 
 
@@ -191,7 +187,7 @@ The properties that are commonly inherited are related to text, so `color`, `lin
 
 Inheritance is great for reducing repetition and maintaining consistency. For example, instead of explicitly setting `font-size: 18px` on each of the block's child elements, consider setting that property on the block itself, then leverage inheritance from there.
 
-Always be aware of what properties would be inherited from the element's context. Then, think hard and decide clearly on whether you want to explicitly control a property, or whether you want to let it inherit from its parent. For example, to ensure buttons are sized consistently throughout the site, you will most likely want to explicitly set its font-size. But when it comes to the line-height of a general section, you will likely want to set it once on its parent only, and allow all its child elements to inherit, to keep the line-height consistent.
+Always be aware of what properties would be inherited from the element's context. Then, think hard and decide clearly on whether to explicitly control a property, or whether to let it inherit from its parent. For example, to ensure buttons are sized consistently throughout the site, we will most likely want to explicitly set its font-size. But when it comes to the line-height of a general section, we will likely want to set it once on its parent only, and allow all its child elements to inherit, to keep the line-height consistent.
 
 
 

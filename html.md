@@ -19,8 +19,8 @@
 
 When setting attributes on tags, follow these rules:
 
-1. The tag's closely associated attributes should come first, e.g. for `<a>`, their `href` attribute should comes first; for `<input>`, their `type` attribute should come first.
-2. CSS-related attributes should come next, and should be sorted in order of specificity, which is `class`, then `style`.
+1. Tag-related and generic attributes should come first, e.g. `href`, `type`, `for`, `title`.
+2. CSS-related attributes should come next, and should be sorted in order of specificity: `class` first, then `style`.
 3. JS-related attributes should come last.
 4. Use one space character to separate each individual attribute.
 5. Use *three* space characters to separate the three *groups* of attributes mentioned above.
@@ -32,7 +32,7 @@ When setting attributes on tags, follow these rules:
     Reset
 </button>
 
-<button type="button" id="Submit" data-ga-track="reset" class="Button" style="margin-left: 5px;">
+<button type="button" id="Submit" data-ga-track="reset" style="margin-left: 5px;" class="Button">
     Submit
 </button>
 
@@ -58,9 +58,9 @@ When setting multiple classes on a single tag:
     1. Component Classes first.
     2. Local Classes second.
     3. Utility Classes last.
-2. Separate Component and Local Classes using three space characters.
+2. Use three space characters to separate the above groups of classes.
 3. When using Modifier Classes, place them *after* their associated base class, separated with one space character.
-4. Utility Classes should be individually spaced with one space character. When using responsive Utility Classes, group them up baseed on their media query, arranged from smallest to largest, and separate each group with three space characters.
+4. Utility Classes should be individually spaced with one space character. When using responsive Utility Classes, group them up based on their media query, arranged from smallest to largest, and separate each group with three space characters.
 5. Arrange them consistently when using on multiple elements.
 
 :exclamation: Be sure to check out the [CSS](css.md) guide for more details on [Component Classes](css.md#component-classes), [Local Classes](css.md#local-classes), [Modifier Classes](css.md#modifier-classes), and [Utility Classes](css.md#utility-classes).
@@ -105,7 +105,7 @@ For the sake of this coding guide, though, I personally see two patterns for it 
 <div id="media-query"></div> <!-- Has styles associated with it -->
 ```
 
-:question: **What is this about setting styles on IDs!?** Well, it's not so much styling, but more like a way to pass in data from CSS, to be consumed in JS. My most common use for this is media query detection, as media queries are a very CSS-thing that I don't want to decouple from the JS side.
+:question: **What is this about setting styles on IDs?** Well, it's not so much styling, but more like a way to pass in data from CSS, to be consumed in JS. My most common use for this is media query detection, as media queries are a very CSS-thing that I don't want to decouple from the JS side.
 
 :exclamation: **When it comes to integration with back-end** (especially .NET and `<input>`), there is typically a decent chance of the ID being replaced by a server-generated ID of some sort, so I generally try not to rely on using IDs if possible. For example, rather than using IDs to link a `<label>` with an `<input>`, just wrap the `<label>` around the target `<input>`.
 
@@ -161,12 +161,13 @@ At my current experience, my rule of thumb is:
 Low hanging fruits that I've stuck with are:
 
 - Typography:
-    - Blockquotes, `<blockquote>`
-    - Definition lists, `<dl>` and its child elements, `<dt>` and `<dd>`
+    - Blockquotes: `<blockquote>`
+    - Definition lists, terms and definitions: `<dl>`, `<dt>` and `<dd>`
     - Headings: `<h1>` down to `<h6>`
     - Inline formatting: `<strong>` vs `<b>`; `<em>` vs `<i>`; `<strike>`
     - Lists: `<ul>` and `<ol>`
     - Paragraphs: `<p>`
+    - Tables: `<table>`; `<thead>` vs `<tbody>` vs `<tfoot>`; `<th>` with the `scope` attribute vs `<td>`;
 - Forms: `<form>`, `<input>`, `<button>`, `<label>`
 - Sectioning: `<section>`, `<aside>`, `<main>`, `<header>`, `<footer>`, `<nav>`
 - Using anchors `<a>` for links that primarily take us to a different page; using `<button>` for clickable elements that primarily run JavaScript
